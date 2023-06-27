@@ -10,18 +10,18 @@ const result = char => {
   }
 
   for (let i = 0; i < char.length; i++) {
-    // check if the character has the brackets
-    if (['(', '{', '['].includes(char[i])) {
+    // 1. input all starting brackets to stack
+    // 2. check if the starting bracket has a closing bracket, remove starting bracket element from stack
+    // 3. if starting bracket has not a closing bracket, return false/no
+    if (['(', '{', '['].includes(char[i]))
       stack.push(char[i])
-    } else {
-      const lastStack = stack.pop()
-      if (char[i] !== bracketPairs[lastStack])
-        return 'NO' // return false/no, if the brackets is not same, so this meaning, the brackets is not balanced
-    }
+    else if (stack[stack.length - 1] !== bracketPairs[char[i]]) 
+      stack.pop()
+    else return 'NO'
   }
 
   // if stack length is not zero, then the brackets is not balanced
-  return stack.length === 0 ? 'YES' : 'NO'
+  return stack.length ? 'NO' : 'YES'
 }
 
 exports.result = result
