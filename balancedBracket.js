@@ -4,9 +4,9 @@ const result = char => {
 
   const stack = []
   const bracketPairs = {
-    '(': ')',
-    '{': '}',
-    '[': ']'
+    ')': '(',
+    '}': '{',
+    ']': '['
   }
 
   for (let i = 0; i < char.length; i++) {
@@ -15,7 +15,7 @@ const result = char => {
     // 3. if starting bracket has not a closing bracket, return false/no
     if (['(', '{', '['].includes(char[i]))
       stack.push(char[i])
-    else if (stack[stack.length - 1] !== bracketPairs[char[i]]) 
+    else if (stack[stack.length - 1] === bracketPairs[char[i]]) 
       stack.pop()
     else return 'NO'
   }
