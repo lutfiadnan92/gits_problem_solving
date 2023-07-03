@@ -1,9 +1,13 @@
-const isAlphabet = string => {
-  const result = string.match(/([a-z])(\1)*/g)
+const getAlphabetCharacters = (string) => {
+  if(string === '') return
+
+  const stringCase = string.toLowerCase()
+  const result = stringCase.match(/([a-z])(\1)*/g)
+
   return result !== null ? result : false
 }
 
-const sumOfQueries = string => {
+const sumOfQueries = (string = []) => {
   return string.flatMap((element) =>
     Array.from(
       new Array(element.length),
@@ -12,8 +16,12 @@ const sumOfQueries = string => {
   )
 }
 const result = (string, queries) => {
-  const stringCase = string.toLowerCase()
-  const alphabet = isAlphabet(stringCase)
+  if (typeof string !== "string" || !Array.isArray(queries))
+    throw new Error(
+      "Invalid input: string must be a string and queries must be an array"
+    )
+
+  const alphabet = getAlphabetCharacters(string)
   const sumOfQueriesSet = sumOfQueries(alphabet)
 
   return queries.map((element) =>
@@ -24,5 +32,5 @@ const result = (string, queries) => {
 module.exports = {
   result: result,
   sumOfQueries: sumOfQueries,
-  isAlphabet: isAlphabet
+  getAlphabetCharacters: getAlphabetCharacters,
 }
