@@ -7,8 +7,8 @@ const getAlphabetCharacters = (string) => {
   return result !== null ? result : false
 }
 
-const sumOfQueries = (string = []) => {
-  return string.flatMap((element) =>
+const sumOfQueries = (array) => {
+  return array.flatMap((element) =>
     Array.from(
       new Array(element.length),
       (_, index) => (element.charCodeAt(0) - 97 + 1) * (index + 1)
