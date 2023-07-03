@@ -1,6 +1,6 @@
-const weightedString = require("./weightedString")
-const isBalancedBracket = require("./balancedBracket")
-const highestPalindrome = require("./highestPalindrome")
+const weightedString = require("./weighted_string/weightedString.services")
+const isBalancedBracket = require("./balanced_bracket/balancedBracket")
+const highestPalindrome = require("./highest_palindrome/highestPalindrome")
 
 console.log("the result is pass")
 console.log(
